@@ -1,18 +1,15 @@
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+package apiUtil;
 
-import java.util.Map;
+import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-public class ApiUtil {
+public class ApiRequests {
 
-    private ApiUtil() {
+    private ApiRequests() {
     }
 
-    public static Response postRequest(String endpoint, Object body, int statusCode) {
+    public static Response postRequestNoToken(String endpoint, Object body, int statusCode) {
         return given()
                 .spec(UrlUtil.specification)
                 .body(body)
@@ -23,10 +20,9 @@ public class ApiUtil {
                 .statusCode(statusCode)
                 .extract()
                 .response();
-
     }
 
-    public static Response postRequestWithAccessToken(String endpoint, Object body, int statusCode, String accessToken) {
+    public static Response postRequest(String endpoint, Object body, int statusCode, String accessToken) {
         return given()
                 .spec(UrlUtil.specification)
                 .header("Authorization", "Bearer " + accessToken)
@@ -51,7 +47,6 @@ public class ApiUtil {
                 .statusCode(statusCode)
                 .extract()
                 .response();
-
     }
 
     public static Response putRequest(String endpoint, Object updatedBody, int statusCode, String accessToken) {
@@ -66,7 +61,6 @@ public class ApiUtil {
                 .statusCode(statusCode)
                 .extract()
                 .response();
-
     }
 
     public static Response deleteRequest(String endpoint, int statusCode, String accessToken, String idUser) {
@@ -80,6 +74,5 @@ public class ApiUtil {
                 .statusCode(statusCode)
                 .extract()
                 .response();
-
     }
 }

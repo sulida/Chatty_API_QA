@@ -1,7 +1,3 @@
-import io.restassured.http.ContentType;
-
-import static io.restassured.RestAssured.given;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -18,48 +14,48 @@ public class Main {
 //                .extract()
 //                .jsonPath()
 //                .getString("accessToken");
-
-        RefreshToken refreshToken = new RefreshToken();
-        given()
-                .when()
-                .log().all()
-                .contentType(ContentType.JSON)
-                .body(refreshToken)
-                .post("http://chatty.telran-edu.de:8989/api/auth/refresh")
-                .then()
-                .log().all()
-                .statusCode(200)
-                .extract()
-                .jsonPath()
-                .getString("access token");
-
-        given()
-                .when()
-                .log().all()
-                .contentType(ContentType.JSON)
-                .get("http://chatty.telran-edu.de:8989/api/me")
-                .then()
-                .log().all()
-                .statusCode(200)
-                .extract()
-                .jsonPath()
-                .getString("id");
-
-
-        UserRegistration userRegistration = new UserRegistration();
-        given()
-                .when()
-                .log().all()
-                .contentType(ContentType.JSON)
-                .queryParam("id")
-                .body(userRegistration)
-                .put("http://chatty.telran-edu.de:8989/api/users/id")
-                .then()
-                .log().all()
-                .statusCode(200)
-                .extract()
-                .body();
-
+//
+//        RefreshToken refreshToken = new RefreshToken();
+//        given()
+//                .when()
+//                .log().all()
+//                .contentType(ContentType.JSON)
+//                .body(refreshToken)
+//                .post("http://chatty.telran-edu.de:8989/api/auth/refresh")
+//                .then()
+//                .log().all()
+//                .statusCode(200)
+//                .extract()
+//                .jsonPath()
+//                .getString("access token");
+//
+//        given()
+//                .when()
+//                .log().all()
+//                .contentType(ContentType.JSON)
+//                .get("http://chatty.telran-edu.de:8989/api/me")
+//                .then()
+//                .log().all()
+//                .statusCode(200)
+//                .extract()
+//                .jsonPath()
+//                .getString("id");
+//
+//
+//        AuthorizationUser authorizationUser = new AuthorizationUser();
+//        given()
+//                .when()
+//                .log().all()
+//                .contentType(ContentType.JSON)
+//                .queryParam("id")
+//                .body(authorizationUser)
+//                .put("http://chatty.telran-edu.de:8989/api/users/id")
+//                .then()
+//                .log().all()
+//                .statusCode(200)
+//                .extract()
+//                .body();
+//
 
 
     }

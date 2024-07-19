@@ -1,4 +1,4 @@
-package object;
+package user;
 
 public enum UserRole {
     ADMIN,
