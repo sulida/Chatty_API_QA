@@ -14,8 +14,6 @@ import user.UserRole;
 import static user.UserRole.ADMIN;
 import static user.UserRole.USER;
 
-import java.util.HashMap;
-
 
 public class BaseTest {
     protected String accessToken;
@@ -26,9 +24,9 @@ public class BaseTest {
 
 
     public Response registerValidUser(UserRole role) {
-        if(ADMIN == role){
+        if (ADMIN == role) {
             this.authUser = getAdminRegistration();
-        } else if(USER == role) {
+        } else if (USER == role) {
             this.authUser = getUserRegistration();
         } else {
             throw new IllegalArgumentException("User with unknown role");
@@ -50,7 +48,6 @@ public class BaseTest {
         } else {
             throw new IllegalArgumentException("User with unknown role");
         }
-
     }
 
     public Response refreshTokens(UserRole role) {
@@ -75,14 +72,6 @@ public class BaseTest {
         return getRequest(GET_USER_PATH, 200, accessToken)
                 .jsonPath()
                 .getString("id");
-    }
-
-    public HashMap<String, String> getTokens(UserRole role) {
-        HashMap<String, String> tokens = new HashMap<>();
-        JsonPath response = registerValidUser(role).jsonPath();
-        tokens.put("accessToken", response.getString("accessToken"));
-        tokens.put("refreshToken", response.getString("refreshToken"));
-        return tokens;
     }
 
 
