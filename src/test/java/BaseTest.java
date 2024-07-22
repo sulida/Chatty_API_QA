@@ -23,17 +23,6 @@ public class BaseTest {
     protected AuthorizationUser authUser;
 
 
-    public Response registerValidUser(UserRole role) {
-        if (ADMIN == role) {
-            this.authUser = getAdminRegistration();
-        } else if (USER == role) {
-            this.authUser = getUserRegistration();
-        } else {
-            throw new IllegalArgumentException("User with unknown role");
-        }
-        return postRequestNoToken(REGISTER_PATH, authUser, 201);
-    }
-
     public void setTokensAfterUserRegistration(UserRole role) {
         JsonPath jsonPath = registerValidUser(role).jsonPath();
         String accessToken = jsonPath.getString("accessToken");
@@ -48,6 +37,17 @@ public class BaseTest {
         } else {
             throw new IllegalArgumentException("User with unknown role");
         }
+    }
+
+    private Response registerValidUser(UserRole role) {
+        if (ADMIN == role) {
+            this.authUser = getAdminRegistration();
+        } else if (USER == role) {
+            this.authUser = getUserRegistration();
+        } else {
+            throw new IllegalArgumentException("User with unknown role");
+        }
+        return postRequestNoToken(REGISTER_PATH, authUser, 201);
     }
 
     public Response refreshTokens(UserRole role) {
@@ -80,5 +80,4 @@ public class BaseTest {
         String idUser = getUserIdAfterRequest();
         return putRequest(UPDATE_OR_DELETE_USER_PATH + idUser, getUpdatedUser(), 200, accessToken);
     }
-
 }
