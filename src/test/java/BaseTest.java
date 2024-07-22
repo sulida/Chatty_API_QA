@@ -2,11 +2,7 @@ import static apiUtil.ApiRequests.getRequest;
 import static apiUtil.ApiRequests.postRequest;
 import static apiUtil.ApiRequests.postRequestNoToken;
 import static apiUtil.ApiRequests.putRequest;
-import apiUtil.UrlUtil;
-import static apiUtil.UrlUtil.GET_USER_PATH;
-import static apiUtil.UrlUtil.REFRESH_PATH;
-import static apiUtil.UrlUtil.REGISTER_PATH;
-import static apiUtil.UrlUtil.UPDATE_OR_DELETE_USER_PATH;
+import static apiUtil.UrlUtil.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import user.AuthorizationUser;
@@ -15,6 +11,8 @@ import static user.UserDataRegistry.getUpdatedUser;
 import static user.UserDataRegistry.getUserForLogin;
 import static user.UserDataRegistry.getUserRegistration;
 import user.UserRole;
+import static user.UserRole.ADMIN;
+import static user.UserRole.USER;
 
 import java.util.HashMap;
 
@@ -22,37 +20,50 @@ import java.util.HashMap;
 public class BaseTest {
     protected String accessToken;
     protected String refreshToken;
+    protected String accessAdminToken;
+    protected String refreshAdminToken;
     protected AuthorizationUser authUser;
 
 
     public Response registerValidUser(UserRole role) {
-        Response response;
-
-        if(UserRole.ADMIN == role){
+        if(ADMIN == role){
             this.authUser = getAdminRegistration();
-            response = postRequestNoToken(REGISTER_PATH, authUser, 201);
-        } else if(UserRole.USER == role){
+        } else if(USER == role) {
             this.authUser = getUserRegistration();
-            response = postRequestNoToken(REGISTER_PATH, authUser, 201);
         } else {
             throw new IllegalArgumentException("User with unknown role");
         }
-
-        return response;
+        return postRequestNoToken(REGISTER_PATH, authUser, 201);
     }
 
     public void setTokensAfterUserRegistration(UserRole role) {
         JsonPath jsonPath = registerValidUser(role).jsonPath();
-        this.accessToken = jsonPath.getString("accessToken");
-        this.refreshToken = jsonPath.getString("refreshToken");
+        String accessToken = jsonPath.getString("accessToken");
+        String refreshToken = jsonPath.getString("refreshToken");
+
+        if (ADMIN == role) {
+            this.accessAdminToken = accessToken;
+            this.refreshAdminToken = refreshToken;
+        } else if (USER == role) {
+            this.accessToken = accessToken;
+            this.refreshToken = refreshToken;
+        } else {
+            throw new IllegalArgumentException("User with unknown role");
+        }
+
     }
 
-    public Response refreshTokens() {
-        return postRequest(REFRESH_PATH, refreshToken, 200, accessToken);
+    public Response refreshTokens(UserRole role) {
+        if(ADMIN == role){
+            return postRequest(REFRESH_PATH, refreshAdminToken, 200, accessAdminToken);
+        } else if (USER == role) {
+            return postRequest(REFRESH_PATH, refreshToken, 200, accessToken);
+        }
+        throw new IllegalArgumentException("User with unknown role");
     }
 
     public Response loginRegisteredUser() {
-        return postRequest(UrlUtil.AUTH_PATH, getUserForLogin(authUser), 200, accessToken);
+        return postRequest(AUTH_PATH, getUserForLogin(authUser), 200, accessToken);
     }
 
     public String getUserIdAfterRequest() {

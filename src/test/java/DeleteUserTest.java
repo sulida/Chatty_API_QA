@@ -1,11 +1,11 @@
-import apiUtil.ApiRequests;
+import static apiUtil.ApiRequests.deleteRequest;
+import static apiUtil.ApiRequests.getRequest;
 import apiUtil.UrlUtil;
 import static apiUtil.UrlUtil.GET_USER_PATH;
 import io.restassured.response.Response;
-import user.UserRole;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import user.UserRole;
 
 public class DeleteUserTest extends BaseTest {
 
@@ -15,9 +15,9 @@ public class DeleteUserTest extends BaseTest {
         setTokensAfterUserRegistration(UserRole.ADMIN);
         String userId = getUserIdAfterRequest();
 
-       ApiRequests.deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 204,  accessToken, userId);
+      deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 204,  accessToken, userId);
 
-       Response getUserResponse = ApiRequests.getRequest(GET_USER_PATH, 200, accessToken);
+       Response getUserResponse = getRequest(GET_USER_PATH, 200, accessToken);
        assertEquals(404, getUserResponse.getStatusCode());
 
 
@@ -33,7 +33,7 @@ public class DeleteUserTest extends BaseTest {
         setTokensAfterUserRegistration(UserRole.ADMIN);
         String userId = getUserIdAfterRequest();
 
-        Response deleteUserResponse = ApiRequests.deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 401,
+        Response deleteUserResponse = deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 401,
                 null, userId);
 
         // ne yverena chto tak message budet mojet drugoj ili ne budet message
@@ -45,6 +45,6 @@ public class DeleteUserTest extends BaseTest {
     @Test
     public void deleteUserBadRequestTest(){
         setTokensAfterUserRegistration(UserRole.ADMIN);
-        ApiRequests.deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 400, accessToken, "");
+        deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 405, accessToken, "");
     }
 }
