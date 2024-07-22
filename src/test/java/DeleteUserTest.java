@@ -15,15 +15,15 @@ public class DeleteUserTest extends BaseTest {
         setTokensAfterUserRegistration(UserRole.ADMIN);
         String userId = getUserIdAfterRequest();
 
-      deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 204,  accessToken, userId);
+        deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 204,  accessAdminToken, userId);
 
-       Response getUserResponse = getRequest(GET_USER_PATH, 200, accessToken);
-       assertEquals(404, getUserResponse.getStatusCode());
+        Response getUserResponse = getRequest(GET_USER_PATH, 200, accessAdminToken);
+        assertEquals(404, getUserResponse.getStatusCode());
 
 
        // ne yverena chto budet takoj message/ mojet ne budet ili drugoj
-       String errorMessage = getUserResponse.getBody().jsonPath().getString("message");
-       assertEquals("User not found!", errorMessage);
+        String errorMessage = getUserResponse.getBody().jsonPath().getString("message");
+        assertEquals("User not found!", errorMessage);
     }
 
 
@@ -45,6 +45,6 @@ public class DeleteUserTest extends BaseTest {
     @Test
     public void deleteUserBadRequestTest(){
         setTokensAfterUserRegistration(UserRole.ADMIN);
-        deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 405, accessToken, "");
+        deleteRequest(UrlUtil.UPDATE_OR_DELETE_USER_PATH, 405, accessAdminToken, "");
     }
 }

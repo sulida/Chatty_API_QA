@@ -62,8 +62,13 @@ public class BaseTest {
         throw new IllegalArgumentException("User with unknown role");
     }
 
-    public Response loginRegisteredUser() {
-        return postRequest(AUTH_PATH, getUserForLogin(authUser), 200, accessToken);
+    public Response loginRegisteredUser(UserRole role) {
+        if (ADMIN == role) {
+            return postRequest(AUTH_PATH, getUserForLogin(authUser), 200, accessAdminToken);
+        } else if (USER == role) {
+            return postRequest(AUTH_PATH, getUserForLogin(authUser), 200, accessToken);
+        }
+        throw new IllegalArgumentException("User with unknown role");
     }
 
     public String getUserIdAfterRequest() {
