@@ -2,3 +2,6 @@
 /shelf/
 /.idea/workspace.xml
 /.idea/
+
+# Ignore target directory
+/target/

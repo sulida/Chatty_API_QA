@@ -5,6 +5,7 @@ import com.google.gson.annotations.Expose;
 import java.util.Objects;
 
 public class User {
+    private String email;
     private String avatarUrl;
     private String name;
     private String surname;
@@ -19,6 +20,19 @@ public class User {
     private String role;
 
     public User() {
+    }
+
+    public User(String email, String avatarUrl, String name, String surname, String birthDate, String phone, String gender, String backgroundUrl, boolean blocked, String id) {
+        this.email = email;
+        this.avatarUrl = avatarUrl;
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.phone = phone;
+        this.gender = gender;
+        this.backgroundUrl = backgroundUrl;
+        this.blocked = blocked;
+        this.id = id;
     }
 
     public User(String avatarUrl, String name, String surname, String birthDate, String phone, String gender,
@@ -43,6 +57,17 @@ public class User {
         this.birthDate = birthDate;
         this.phone = phone;
         this.gender = gender;
+        this.backgroundUrl = backgroundUrl;
+        this.blocked = blocked;
+    }
+
+    public User(String avatarUrl, String name, String surname, String birthDate, String phone,
+                String backgroundUrl, boolean blocked) {
+        this.avatarUrl = avatarUrl;
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.phone = phone;
         this.backgroundUrl = backgroundUrl;
         this.blocked = blocked;
     }

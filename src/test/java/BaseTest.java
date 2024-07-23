@@ -51,7 +51,7 @@ public class BaseTest {
     }
 
     public Response refreshTokens(UserRole role) {
-        if(ADMIN == role){
+        if (ADMIN == role) {
             return postRequest(REFRESH_PATH, refreshAdminToken, 200, accessAdminToken);
         } else if (USER == role) {
             return postRequest(REFRESH_PATH, refreshToken, 200, accessToken);
@@ -74,10 +74,4 @@ public class BaseTest {
                 .getString("id");
     }
 
-
-     //!!!recomedyy vinesti v test update user etot method
-    public Response updateUser() {
-        String idUser = getUserIdAfterRequest();
-        return putRequest(UPDATE_OR_DELETE_USER_PATH + idUser, getUpdatedUser(), 200, accessToken);
-    }
 }
