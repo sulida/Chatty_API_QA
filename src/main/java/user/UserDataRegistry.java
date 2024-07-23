@@ -37,8 +37,8 @@ public class UserDataRegistry {
         return new AuthorizationUser(FAKER.internet().emailAddress(), PASSWORD, PASSWORD, USER_ROLE);
     }
 
-    public static User getUpdatedUser() {
-        return new User(FAKER.internet().emailAddress(), AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER,
+    public static User getUpdatedUser(String registeredEmail) {
+        return new User(registeredEmail, AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER,
                 BACKGROUND_URL, BLOCKED);
     }
 

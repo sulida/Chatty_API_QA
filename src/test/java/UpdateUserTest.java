@@ -16,7 +16,7 @@ public class UpdateUserTest extends AdminUserTest {
 
     @Test
     public void updateUserTest() {
-        User expectedUser = getUpdatedUser();
+        User expectedUser = getUpdatedUser(authRegisteredUser.getEmail());
         putRequest(UPDATE_OR_DELETE_USER_PATH + userId, expectedUser, 200, accessToken);
         User returnedUser = getRequest(GET_USER_PATH, 200, accessToken).body().as(User.class);
 
