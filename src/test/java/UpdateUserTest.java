@@ -11,7 +11,7 @@ import user.User;
 import static user.UserDataRegistry.getInvalidUser;
 import static user.UserDataRegistry.getUpdatedUser;
 
-public class UpdateUser extends AdminUserTest {
+public class UpdateUserTest extends AdminUserTest {
 
 
     @Test
@@ -30,7 +30,6 @@ public class UpdateUser extends AdminUserTest {
         assertEquals(expectedUser.getPhone(), returnedUser.getPhone());
         assertEquals(expectedUser.getBackgroundUrl(), returnedUser.getBackgroundUrl());
         assertEquals(expectedUser.getBirthDate(), returnedUser.getBirthDate());
-
     }
 
 

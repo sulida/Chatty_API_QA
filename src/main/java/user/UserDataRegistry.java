@@ -38,7 +38,8 @@ public class UserDataRegistry {
     }
 
     public static User getUpdatedUser() {
-        return new User(AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER, BACKGROUND_URL, BLOCKED);
+        return new User(FAKER.internet().emailAddress(), AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER,
+                BACKGROUND_URL, BLOCKED);
     }
 
     public static AuthorizationUser getUpdatedPassword() {
@@ -47,7 +48,7 @@ public class UserDataRegistry {
     }
 
     public  static  User getInvalidUser(){
-        return new User(AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, BACKGROUND_URL, BLOCKED);
+        return new User(null, null, NAME, SURNAME, null, "", GENDER, BACKGROUND_URL, BLOCKED);
     }
 
 }

@@ -22,7 +22,8 @@ public class User {
     public User() {
     }
 
-    public User(String email, String avatarUrl, String name, String surname, String birthDate, String phone, String gender, String backgroundUrl, boolean blocked, String id) {
+    public User(String email, String avatarUrl, String name, String surname, String birthDate, String phone, String gender,
+                String backgroundUrl, boolean blocked) {
         this.email = email;
         this.avatarUrl = avatarUrl;
         this.name = name;
@@ -32,11 +33,11 @@ public class User {
         this.gender = gender;
         this.backgroundUrl = backgroundUrl;
         this.blocked = blocked;
-        this.id = id;
     }
 
-    public User(String avatarUrl, String name, String surname, String birthDate, String phone, String gender,
+    public User(String email, String avatarUrl, String name, String surname, String birthDate, String phone, String gender,
                 String backgroundUrl, boolean blocked, String id, String role) {
+        this.email = email;
         this.avatarUrl = avatarUrl;
         this.name = name;
         this.surname = surname;
@@ -48,30 +49,6 @@ public class User {
         this.id = id;
         this.role = role;
     }
-
-    public User(String avatarUrl, String name, String surname, String birthDate, String phone, String gender,
-                String backgroundUrl, boolean blocked) {
-        this.avatarUrl = avatarUrl;
-        this.name = name;
-        this.surname = surname;
-        this.birthDate = birthDate;
-        this.phone = phone;
-        this.gender = gender;
-        this.backgroundUrl = backgroundUrl;
-        this.blocked = blocked;
-    }
-
-    public User(String avatarUrl, String name, String surname, String birthDate, String phone,
-                String backgroundUrl, boolean blocked) {
-        this.avatarUrl = avatarUrl;
-        this.name = name;
-        this.surname = surname;
-        this.birthDate = birthDate;
-        this.phone = phone;
-        this.backgroundUrl = backgroundUrl;
-        this.blocked = blocked;
-    }
-
     public String getAvatarUrl() {
         return avatarUrl;
     }
