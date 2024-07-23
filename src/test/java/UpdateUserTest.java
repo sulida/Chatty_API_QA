@@ -3,10 +3,10 @@ import static apiUtil.ApiRequests.getRequest;
 import static apiUtil.ApiRequests.putRequest;
 import static apiUtil.UrlUtil.GET_USER_PATH;
 import static apiUtil.UrlUtil.UPDATE_OR_DELETE_USER_PATH;
-import static com.sun.org.apache.xpath.internal.compiler.Token.contains;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import user.User;
@@ -26,17 +26,20 @@ public class UpdateUserTest extends AdminUserTest {
         assertEquals(expectedUser.getName(), returnedUser.getName());
         assertEquals(expectedUser.getSurname(), returnedUser.getSurname());
         assertEquals(userId, returnedUser.getId());
-        assertFalse(returnedUser.getEmail().isEmpty());
         assertEquals(expectedUser.getGender(), returnedUser.getGender());
         assertEquals(expectedUser.getPhone(), returnedUser.getPhone());
-        assertTrue(contains(returnedUser.getBirthDate()));
-  //      assertEquals(expectedUser.getBackgroundUrl(), returnedUser.getBackgroundUrl());
+        assertTrue(returnedUser.getBirthDate().contains(expectedUser.getBirthDate().substring(0,10)));
+        assertFalse(returnedUser.getEmail().isEmpty());
+        assertFalse(returnedUser.getRole().isEmpty());
+        assertFalse(returnedUser.getBlocked());
+        assertNull(returnedUser.getBackgroundUrl());
     }
 
 
     @Test
     public void updateUserNoAuthorizationTest() {
-        putRequest(UPDATE_OR_DELETE_USER_PATH + userId, getUpdatedUser(authRegisteredUser.getEmail()), 401, null);
+        putRequest(UPDATE_OR_DELETE_USER_PATH + userId, getUpdatedUser(authRegisteredUser.getEmail()),
+                401, null);
     }
 
     @Test

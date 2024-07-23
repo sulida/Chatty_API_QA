@@ -5,6 +5,7 @@ import com.google.gson.annotations.Expose;
 import java.util.Objects;
 
 public class User {
+    @Expose(serialize = true, deserialize = false)
     private String email;
     private String avatarUrl;
     private String name;
@@ -13,6 +14,7 @@ public class User {
     private String phone;
     private String gender;
     private String backgroundUrl;
+    @Expose(serialize = false, deserialize = true)
     private boolean blocked;
     @Expose(serialize = true, deserialize = false)
     private String id;
@@ -49,6 +51,7 @@ public class User {
         this.id = id;
         this.role = role;
     }
+
     public String getAvatarUrl() {
         return avatarUrl;
     }
