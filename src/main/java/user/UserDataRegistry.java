@@ -1,7 +1,6 @@
 package user;
 
 import com.github.javafaker.Faker;
-import com.google.gson.annotations.Expose;
 
 public class UserDataRegistry {
     private static final Faker FAKER = new Faker();
@@ -51,4 +50,5 @@ public class UserDataRegistry {
     public  static  User getInvalidUser(){
         return new User(AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, BACKGROUND_URL, BLOCKED);
     }
+
 }
