@@ -1,13 +1,14 @@
 import static apiUtil.ApiRequests.getRequest;
 import static apiUtil.ApiRequests.postRequest;
 import static apiUtil.ApiRequests.postRequestNoToken;
-import static apiUtil.ApiRequests.putRequest;
-import static apiUtil.UrlUtil.*;
+import static apiUtil.UrlUtil.AUTH_PATH;
+import static apiUtil.UrlUtil.GET_USER_PATH;
+import static apiUtil.UrlUtil.REFRESH_PATH;
+import static apiUtil.UrlUtil.REGISTER_PATH;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import user.AuthorizationUser;
 import static user.UserDataRegistry.getAdminRegistration;
-import static user.UserDataRegistry.getUpdatedUser;
 import static user.UserDataRegistry.getUserForLogin;
 import static user.UserDataRegistry.getUserRegistration;
 import user.UserRole;

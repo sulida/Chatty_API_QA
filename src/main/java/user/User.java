@@ -21,10 +21,11 @@ public class User {
     @Expose(serialize = true, deserialize = false)
     private String role;
 
-    public User(Object o, Object o1, String name, String surname, Object o2, String s, String gender, String backgroundUrl, boolean blocked) {
+    public User() {
     }
 
-    public User(String email, String avatarUrl, String name, String surname, String birthDate, String phone, String gender, String backgroundUrl, boolean blocked, String id) {
+    public User(String email, String avatarUrl, String name, String surname, String birthDate, String phone, String gender,
+                String backgroundUrl, boolean blocked) {
         this.email = email;
         this.avatarUrl = avatarUrl;
         this.name = name;
@@ -34,11 +35,11 @@ public class User {
         this.gender = gender;
         this.backgroundUrl = backgroundUrl;
         this.blocked = blocked;
-        this.id = id;
     }
 
-    public User(String avatarUrl, String name, String surname, String birthDate, String phone, String gender,
+    public User(String email, String avatarUrl, String name, String surname, String birthDate, String phone, String gender,
                 String backgroundUrl, boolean blocked, String id, String role) {
+        this.email = email;
         this.avatarUrl = avatarUrl;
         this.name = name;
         this.surname = surname;
@@ -160,6 +161,10 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
     }
 
     @Override

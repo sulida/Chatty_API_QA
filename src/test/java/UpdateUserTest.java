@@ -1,14 +1,8 @@
-import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import user.User;
-import user.UserDataRegistry;
 
-import static apiUtil.ApiRequests.*;
-import static apiUtil.UrlUtil.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.junit.jupiter.api.Assertions.*;
 import static user.UserDataRegistry.getInvalidUser;
 import static user.UserDataRegistry.getUpdatedUser;
 import static apiUtil.ApiRequests.deleteRequest;
@@ -17,20 +11,12 @@ import static apiUtil.ApiRequests.putRequest;
 import static apiUtil.UrlUtil.GET_USER_PATH;
 import static apiUtil.UrlUtil.UPDATE_OR_DELETE_OR_GET_USER_PATH;
 
-import org.junit.jupiter.api.AfterEach;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
-import user.User;
-
-import static user.UserDataRegistry.getInvalidUser;
-import static user.UserDataRegistry.getUpdatedUser;
-
-public class UpdateUser extends AdminUserTest {
+public class UpdateUserTest extends AdminUserTest {
 
     @Test
     public void updateUserTest() {

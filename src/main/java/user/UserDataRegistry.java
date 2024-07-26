@@ -1,7 +1,6 @@
 package user;
 
 import com.github.javafaker.Faker;
-import com.google.gson.annotations.Expose;
 
 public class UserDataRegistry {
     private static final Faker FAKER = new Faker();
@@ -14,7 +13,6 @@ public class UserDataRegistry {
     private static final String ADMIN_ROLE = UserRole.ADMIN.toString().toLowerCase();
     private static final String AVATAR_URL = "string";
     private static final String BIRTH_DATE = "2000-07-18T22:10:23.985Z";
-    //    "2024-07-18T22:10:23.985Z";
     private static final String PHONE = "+55591098360";
     private static final String GENDER = "MALE";
     private static final String BACKGROUND_URL = "string";
@@ -62,4 +60,5 @@ public class UserDataRegistry {
     public  static  User getInvalidUser(){
         return new User(null, null, NAME, SURNAME, null, "", GENDER, BACKGROUND_URL, BLOCKED);
     }
+
 }
