@@ -1,0 +1,425 @@
+{
+	"id": "2ab5c7e7-1d54-4a8e-86e9-741d04498737",
+	"name": "Chatty Project",
+	"timestamp": "2024-07-18T11:31:29.613Z",
+	"collection_id": "32276685-6ee026cb-4e9d-4d95-9a9b-3eb6b061a036",
+	"folder_id": 0,
+	"environment_id": "32276685-1bbea1bb-649b-4f5e-84ec-58a489a38bb7",
+	"totalPass": 13,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-07-18T11:31:28.238Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "dd82a568-4ae9-4f60-92a6-3823d3f3ef84",
+			"name": "Registration user",
+			"url": "http://chatty.telran-edu.de:8989/api/auth/register",
+			"time": 35,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				35
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "039bd705-d41e-4486-90ba-18e69b8d3d58",
+			"name": "Refresh token for user",
+			"url": "http://chatty.telran-edu.de:8989/api/auth/refresh",
+			"time": 17,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "29b75a63-b0ed-4dac-82af-705ae1de2b9f",
+			"name": "Get user 1",
+			"url": "http://chatty.telran-edu.de:8989/api/me",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ed2b0380-7877-4e4a-893d-d6b7dd280c88",
+			"name": "Login user",
+			"url": "http://chatty.telran-edu.de:8989/api/auth/login",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "82ea42f9-80e4-43da-b12e-d50c7c0615f9",
+			"name": "Update user 1",
+			"url": "http://chatty.telran-edu.de:8989/api/users/d9b9abf2-e5a1-41b7-8fe8-bb83b21f95a9",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4ece54d2-4df4-4c39-b06c-4f93d8a95b47",
+			"name": "Registration admin",
+			"url": "http://chatty.telran-edu.de:8989/api/auth/register",
+			"time": 17,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "65f670cc-3fd9-4b00-aeb5-0156e5d9d1df",
+			"name": "Refresh token for admin",
+			"url": "http://chatty.telran-edu.de:8989/api/auth/refresh",
+			"time": 17,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "ab4aa72c-d166-4c1a-9b5c-628b70bedc29",
+			"name": "Login admin",
+			"url": "http://chatty.telran-edu.de:8989/api/auth/login",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "69997c54-d8a2-4f45-91be-42134ee293a0",
+			"name": "Get user 1",
+			"url": "http://chatty.telran-edu.de:8989/api/me",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "aac91320-7f7f-4993-9b6d-fcb8f2e41099",
+			"name": "Get admin",
+			"url": "http://chatty.telran-edu.de:8989/api/me",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b6662ab1-0595-4d31-b5d0-dbfc35aba189",
+			"name": "Delete user 1",
+			"url": "http://chatty.telran-edu.de:8989/api/users/d9b9abf2-e5a1-41b7-8fe8-bb83b21f95a9",
+			"time": 19,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "f21b61eb-e839-4a96-affa-a2a1f229517b",
+			"name": "Get users",
+			"url": "http://chatty.telran-edu.de:8989/api/users",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b4b655f9-8fb2-4c70-be70-ff19aaad53e0",
+			"name": "Create post",
+			"url": "http://chatty.telran-edu.de:8989/api/posts",
+			"time": 16,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 229,
+	"collection": {
+		"requests": [
+			{
+				"id": "dd82a568-4ae9-4f60-92a6-3823d3f3ef84",
+				"method": "POST"
+			},
+			{
+				"id": "039bd705-d41e-4486-90ba-18e69b8d3d58",
+				"method": "POST"
+			},
+			{
+				"id": "29b75a63-b0ed-4dac-82af-705ae1de2b9f",
+				"method": "GET"
+			},
+			{
+				"id": "ed2b0380-7877-4e4a-893d-d6b7dd280c88",
+				"method": "POST"
+			},
+			{
+				"id": "82ea42f9-80e4-43da-b12e-d50c7c0615f9",
+				"method": "PUT"
+			},
+			{
+				"id": "4ece54d2-4df4-4c39-b06c-4f93d8a95b47",
+				"method": "POST"
+			},
+			{
+				"id": "65f670cc-3fd9-4b00-aeb5-0156e5d9d1df",
+				"method": "POST"
+			},
+			{
+				"id": "ab4aa72c-d166-4c1a-9b5c-628b70bedc29",
+				"method": "POST"
+			},
+			{
+				"id": "69997c54-d8a2-4f45-91be-42134ee293a0",
+				"method": "GET"
+			},
+			{
+				"id": "aac91320-7f7f-4993-9b6d-fcb8f2e41099",
+				"method": "GET"
+			},
+			{
+				"id": "b6662ab1-0595-4d31-b5d0-dbfc35aba189",
+				"method": "DELETE"
+			},
+			{
+				"id": "f21b61eb-e839-4a96-affa-a2a1f229517b",
+				"method": "GET"
+			},
+			{
+				"id": "b4b655f9-8fb2-4c70-be70-ff19aaad53e0",
+				"method": "POST"
+			}
+		]
+	}
+}

@@ -49,6 +49,19 @@ public class ApiRequests {
                 .response();
     }
 
+    public static Response getRequestPosts(String endpoint, int statusCode, String accessToken, String idUser) {
+        return given()
+                .spec(UrlUtil.specification)
+                .header("Authorization", "Bearer " + accessToken)
+                .when()
+                .get(endpoint + idUser + "/posts")
+                .then()
+                .log().all()
+                .statusCode(statusCode)
+                .extract()
+                .response();
+    }
+
     public static Response putRequest(String endpoint, Object updatedBody, int statusCode, String accessToken) {
         return given()
                 .spec(UrlUtil.specification)

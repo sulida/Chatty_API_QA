@@ -5,6 +5,7 @@ import java.util.Objects;
 public class AuthorizationUser {
     private String email;
     private String password;
+    private String currentPassword;
     private String newPassword;
     private String confirmPassword;
     private String role;
@@ -12,9 +13,10 @@ public class AuthorizationUser {
     public AuthorizationUser() {
     }
 
-    public AuthorizationUser(String password, String newPassword) {
-        this.password = password;
+    public AuthorizationUser(String currentPassword, String newPassword, String confirmPassword) {
+        this.currentPassword = currentPassword;
         this.newPassword = newPassword;
+        this.confirmPassword = confirmPassword;
 
     }
 

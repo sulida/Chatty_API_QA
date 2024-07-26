@@ -20,7 +20,7 @@ public class BaseTest {
     protected String refreshToken;
     protected String accessAdminToken;
     protected String refreshAdminToken;
-    protected AuthorizationUser authUser;
+    protected AuthorizationUser authRegisteredUser;
 
 
     public void setTokensAfterUserRegistration(UserRole role) {
@@ -41,13 +41,13 @@ public class BaseTest {
 
     private Response registerValidUser(UserRole role) {
         if (ADMIN == role) {
-            this.authUser = getAdminRegistration();
+            this.authRegisteredUser = getAdminRegistration();
         } else if (USER == role) {
-            this.authUser = getUserRegistration();
+            this.authRegisteredUser = getUserRegistration();
         } else {
             throw new IllegalArgumentException("User with unknown role");
         }
-        return postRequestNoToken(REGISTER_PATH, authUser, 201);
+        return postRequestNoToken(REGISTER_PATH, authRegisteredUser, 201);
     }
 
     public Response refreshTokens(UserRole role) {
@@ -61,9 +61,9 @@ public class BaseTest {
 
     public Response loginRegisteredUser(UserRole role) {
         if (ADMIN == role) {
-            return postRequest(AUTH_PATH, getUserForLogin(authUser), 200, accessAdminToken);
+            return postRequest(AUTH_PATH, getUserForLogin(authRegisteredUser), 200, accessAdminToken);
         } else if (USER == role) {
-            return postRequest(AUTH_PATH, getUserForLogin(authUser), 200, accessToken);
+            return postRequest(AUTH_PATH, getUserForLogin(authRegisteredUser), 200, accessToken);
         }
         throw new IllegalArgumentException("User with unknown role");
     }

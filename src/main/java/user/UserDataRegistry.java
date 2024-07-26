@@ -8,6 +8,7 @@ public class UserDataRegistry {
     private static final String NAME = FAKER.name().firstName();
     private static final String SURNAME = FAKER.name().lastName();
     private static final String PASSWORD = "1234hjkl";
+    private static final String CURRENTPASSWORD = "1234hjkl";
     private static final String NEWPASSWORD = "1234hjkl1";
     private static final String USER_ROLE = UserRole.USER.toString().toLowerCase();
     private static final String ADMIN_ROLE = UserRole.ADMIN.toString().toLowerCase();
@@ -39,16 +40,26 @@ public class UserDataRegistry {
         return new AuthorizationUser(FAKER.internet().emailAddress(), PASSWORD, PASSWORD, USER_ROLE);
     }
 
-    public static User getUpdatedUser() {
-        return new User(AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER, BACKGROUND_URL, BLOCKED);
+    public static User getUpdatedUser(String registeredEmail) {
+        return new User(registeredEmail, AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER,
+                BACKGROUND_URL, BLOCKED);
     }
+//
+//    public static User getUpdatedUser() {
+//        return new User(AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER, BACKGROUND_URL, BLOCKED);
+//    }
 
     public static AuthorizationUser getUpdatedPassword() {
-        return new AuthorizationUser(PASSWORD, NEWPASSWORD);
+        return new AuthorizationUser(CURRENTPASSWORD, NEWPASSWORD, NEWPASSWORD);
+
+    }
+
+    public static AuthorizationUser getUpdatedInvalidPassword() {
+        return new AuthorizationUser(PASSWORD, NEWPASSWORD, PASSWORD);
 
     }
 
     public  static  User getInvalidUser(){
-        return new User(AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, BACKGROUND_URL, BLOCKED);
+        return new User(null, null, NAME, SURNAME, null, "", GENDER, BACKGROUND_URL, BLOCKED);
     }
 }
