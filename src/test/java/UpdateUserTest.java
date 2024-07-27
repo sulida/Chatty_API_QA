@@ -23,7 +23,6 @@ public class UpdateUserTest extends AdminUserTest {
         User expectedUser = getUpdatedUser(authRegisteredUser.getEmail());
         putRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH + userId, expectedUser, 200, accessToken);
         User returnedUser = getRequest(GET_USER_PATH, 200, accessToken).body().as(User.class);
-
         assertEquals(expectedUser.getAvatarUrl(), returnedUser.getAvatarUrl());
         assertEquals(expectedUser.getName(), returnedUser.getName());
         assertEquals(expectedUser.getSurname(), returnedUser.getSurname());
@@ -39,7 +38,7 @@ public class UpdateUserTest extends AdminUserTest {
 
 
     @Test
-    public void updateUserNoAuthorizationTest() {
+    public void updateUserNoAuthorisationTest() {
         putRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH + userId, getUpdatedUser(authRegisteredUser.getEmail()),
                 401, null);
     }
@@ -56,45 +55,3 @@ public class UpdateUserTest extends AdminUserTest {
     }
 
 }
-
-
-//    @Test
-//    public void updateUserTest() {
-//        updateUser();
-//        Response getUserResponse = getRequest(GET_USER_PATH, 200, accessToken);
-//        User updatedUser = getUpdatedUser();
-//        assertEquals(updatedUser.getAvatarUrl(), getUserResponse.jsonPath().getString("avatarUrl"));
-//        assertEquals(updatedUser.getName(), getUserResponse.jsonPath().getString("name"));
-//        assertEquals(updatedUser.getSurname(), getUserResponse.jsonPath().getString("surname"));
-//        assertThat(getUserResponse.jsonPath().getString("birthDate"), containsString("2000-07-18"));
-////        assertEquals(updatedUser.getBirthDate(), getUserResponse.jsonPath().getString("birthDate"));
-////        assertThat(getUserResponse.jsonPath().getString("birthDate"), containsString(updatedUser.getBirthDate()));
-//        assertEquals(updatedUser.getPhone(), getUserResponse.jsonPath().getString("phone"));
-//        assertEquals(updatedUser.getGender(), getUserResponse.jsonPath().getString("gender"));
-//        assertEquals(updatedUser.getBackgroundUrl(), getUserResponse.jsonPath().getString("backgroundUrl"));
-//        assertEquals(updatedUser.getBlocked(), getUserResponse.jsonPath().getBoolean("blocked"));
-//        assertEquals(authUser.getEmail(), getUserResponse.jsonPath().getString("email"));
-//        assertEquals(userId, getUserResponse.jsonPath().getString("id"));
-//
-//    }
-//
-//    @Test
-//    public void updateUserNoAuthorizationTest() {
-//        Response updateUserResponse = putRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH + userId,
-//                getUpdatedUser(), 401, null);
-//
-//    }
-//
-//    @Test
-//    public void updateUserBadRequestTest() {
-//        Response badRequestResponse = putRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH + userId,
-//                getInvalidUser(), 400, accessAdminToken);
-//
-//    }
-//
-//    public Response updateUser() {
-//        return putRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH + userId, getUpdatedUser(), 200, accessToken);
-//    }
-//
-
-

@@ -42,10 +42,7 @@ public class UserDataRegistry {
         return new User(registeredEmail, AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER,
                 BACKGROUND_URL, BLOCKED);
     }
-//
-//    public static User getUpdatedUser() {
-//        return new User(AVATAR_URL, NAME, SURNAME, BIRTH_DATE, PHONE, GENDER, BACKGROUND_URL, BLOCKED);
-//    }
+
 
     public static AuthorizationUser getUpdatedPassword() {
         return new AuthorizationUser(CURRENTPASSWORD, NEWPASSWORD, NEWPASSWORD);
@@ -57,7 +54,7 @@ public class UserDataRegistry {
 
     }
 
-    public  static  User getInvalidUser(){
+    public static User getInvalidUser() {
         return new User(null, null, NAME, SURNAME, null, "", GENDER, BACKGROUND_URL, BLOCKED);
     }
 

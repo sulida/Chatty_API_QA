@@ -1,17 +1,19 @@
 import static apiUtil.ApiRequests.getRequest;
 import static apiUtil.ApiRequests.postRequest;
 import static apiUtil.ApiRequests.postRequestNoToken;
-import static apiUtil.UrlUtil.AUTH_PATH;
-import static apiUtil.UrlUtil.GET_USER_PATH;
-import static apiUtil.UrlUtil.REFRESH_PATH;
-import static apiUtil.UrlUtil.REGISTER_PATH;
+
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import user.AuthorizationUser;
+
+import static apiUtil.UrlUtil.*;
+import static post.PostCreate.createNewPost;
 import static user.UserDataRegistry.getAdminRegistration;
 import static user.UserDataRegistry.getUserForLogin;
 import static user.UserDataRegistry.getUserRegistration;
+
 import user.UserRole;
+
 import static user.UserRole.ADMIN;
 import static user.UserRole.USER;
 
@@ -74,5 +76,12 @@ public class BaseTest {
                 .jsonPath()
                 .getString("id");
     }
+
+    public String getPostIdAfterCreateNewPost() {
+        return postRequest(CREATE_POST_PATH, createNewPost(), 201, accessToken)
+                .jsonPath()
+                .getString("id");
+    }
+
 
 }

@@ -49,7 +49,7 @@ public class ApiRequests {
                 .response();
     }
 
-    public static Response getRequestPosts(String endpoint, int statusCode, String accessToken, String idUser) {
+    public static Response getRequestPosts(String endpoint, int statusCode, String idUser, String accessToken) {
         return given()
                 .spec(UrlUtil.specification)
                 .header("Authorization", "Bearer " + accessToken)
@@ -82,6 +82,19 @@ public class ApiRequests {
                 .header("Authorization", "Bearer " + accessToken)
                 .when()
                 .delete(endpoint + idUser)
+                .then()
+                .log().all()
+                .statusCode(statusCode)
+                .extract()
+                .response();
+    }
+
+    public static Response deletePostRequest(String endpoint, int statusCode, String accessToken) {
+        return given()
+                .spec(UrlUtil.specification)
+                .header("Authorization", "Bearer " + accessToken)
+                .when()
+                .delete(endpoint)
                 .then()
                 .log().all()
                 .statusCode(statusCode)

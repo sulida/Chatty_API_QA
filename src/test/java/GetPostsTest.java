@@ -1,19 +1,43 @@
 import apiUtil.ApiRequests;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static apiUtil.ApiRequests.getRequestPosts;
+import static apiUtil.ApiRequests.*;
+import static apiUtil.UrlUtil.CREATE_POST_PATH;
 import static apiUtil.UrlUtil.UPDATE_OR_DELETE_OR_GET_USER_PATH;
+import static post.PostCreate.createNewPost;
+import static post.PostCreate.createNewPostWithInvalidData;
 
-public class GetPostsTest extends AdminUserTest{
+public class GetPostsTest extends AdminUserTest {
 
     @Test
     public void getPostsTest() {
+        postRequest(CREATE_POST_PATH, createNewPost(), 201, accessToken);
         getPosts();
 
     }
 
-    private void getPosts() {
-        getRequestPosts(UPDATE_OR_DELETE_OR_GET_USER_PATH, 200, userId, accessToken);
+    @Test
+    public void getPostsWithMissingDataTest() {
+        postRequest(CREATE_POST_PATH, createNewPost(), 201, accessToken);
+        getRequestPosts(UPDATE_OR_DELETE_OR_GET_USER_PATH, 400, "", accessAdminToken);
     }
+
+    @Test
+    public void getPostsWithNoAuthorisationTest() {
+        postRequest(CREATE_POST_PATH, createNewPost(), 201, accessToken);
+        getRequestPosts(UPDATE_OR_DELETE_OR_GET_USER_PATH, 401, userId, "");
+    }
+
+    private void getPosts() {
+        getRequestPosts(UPDATE_OR_DELETE_OR_GET_USER_PATH, 200, userId, accessAdminToken);
+    }
+
+    @AfterEach
+    public void deleteUser() {
+        deleteRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH, 204, accessAdminToken, userId);
+    }
+
 }

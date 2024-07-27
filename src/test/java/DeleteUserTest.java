@@ -5,9 +5,10 @@ import io.restassured.response.Response;
 
 import static apiUtil.UrlUtil.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-public class DeleteUserTest extends AdminUserTest{
+public class DeleteUserTest extends AdminUserTest {
 
     @Test
     public void deleteUserTest() {
@@ -27,13 +28,13 @@ public class DeleteUserTest extends AdminUserTest{
     }
 
     @Test
-    public void deleteUserBadRequestTest(){
+    public void deleteUserBadRequestTest() {
         deleteRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH, 404, accessAdminToken, "");
         deleteUserByAdmin();
     }
 
 
-    private void deleteUserByAdmin(){
-        deleteRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH, 204,  accessAdminToken, userId);
+    private void deleteUserByAdmin() {
+        deleteRequest(UPDATE_OR_DELETE_OR_GET_USER_PATH, 204, accessAdminToken, userId);
     }
 }
