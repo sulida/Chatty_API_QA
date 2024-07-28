@@ -1,3 +1,6 @@
+package postTests;
+
+import baseTests.AdminUserTest;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -5,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static apiUtil.ApiRequests.*;
 import static apiUtil.UrlUtil.CREATE_POST_PATH;
 import static apiUtil.UrlUtil.UPDATE_OR_DELETE_OR_GET_USER_PATH;
-import static post.PostCreate.createNewPost;
+import static post.PostData.createNewPost;
 
 public class GetPostByIdTest extends AdminUserTest {
     protected String id;

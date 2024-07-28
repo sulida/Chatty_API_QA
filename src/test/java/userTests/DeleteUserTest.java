@@ -1,6 +1,9 @@
+package userTests;
+
 import static apiUtil.ApiRequests.deleteRequest;
 import static apiUtil.ApiRequests.getRequest;
 
+import baseTests.AdminUserTest;
 import io.restassured.response.Response;
 
 import static apiUtil.UrlUtil.*;

@@ -1,5 +1,7 @@
+package postTests;
+
+import baseTests.CreatePostBaseTest;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import post.Post;
 import user.User;
@@ -7,7 +9,7 @@ import user.User;
 import static apiUtil.ApiRequests.*;
 import static apiUtil.UrlUtil.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static post.PostCreate.updatePostWithValidData;
+import static post.PostData.updatePostWithValidData;
 
 public class UpdatePostTest extends CreatePostBaseTest {
     @Test

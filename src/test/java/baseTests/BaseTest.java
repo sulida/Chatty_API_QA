@@ -1,3 +1,5 @@
+package baseTests;
+
 import static apiUtil.ApiRequests.getRequest;
 import static apiUtil.ApiRequests.postRequest;
 import static apiUtil.ApiRequests.postRequestNoToken;
@@ -7,7 +9,7 @@ import io.restassured.response.Response;
 import user.AuthorizationUser;
 
 import static apiUtil.UrlUtil.*;
-import static post.PostCreate.createNewPost;
+import static post.PostData.createNewPost;
 import static user.UserDataRegistry.getAdminRegistration;
 import static user.UserDataRegistry.getUserForLogin;
 import static user.UserDataRegistry.getUserRegistration;

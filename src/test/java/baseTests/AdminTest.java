@@ -1,3 +1,5 @@
+package baseTests;
+
 import org.junit.jupiter.api.BeforeEach;
 import static user.UserRole.ADMIN;
 

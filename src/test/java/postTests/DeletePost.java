@@ -1,3 +1,6 @@
+package postTests;
+
+import baseTests.CreatePostBaseTest;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 

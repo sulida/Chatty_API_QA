@@ -1,6 +1,6 @@
 package post;
 
-public class PostCreate {
+public class PostData {
     private static final String TITLE = "Absd efg hjklmn opqr stuvwxyz 1234567890";
     private static final String DESCRIPTION = "Absd efg hjklmn opqr stuvwxyz 1234567890";
     private static final String BODY = "Absd efg hjklmn opqr stuvwxyz 1234567890";
@@ -14,7 +14,7 @@ public class PostCreate {
     private static final boolean UPDATED_DRAFT = false;
 
 
-    private PostCreate() {
+    private PostData() {
     }
 
     public static Post createNewPost() {
